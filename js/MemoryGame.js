@@ -14,6 +14,7 @@ class MemoryGame {
       "./assets/projetar.svg",
       "./assets/refletir.svg",
     ];
+    this.cardsSelected = [];
   }
 
   renderDeck() {
@@ -33,9 +34,31 @@ class MemoryGame {
 
       let backImg = document.createElement("img"); // <img />
       backImg.src = "./assets/fe.svg";
+      backImg.classList.add("show");
 
       board.appendChild(imgTag);
       board.appendChild(backImg);
     });
+  }
+
+  flip(card) {
+    //pegar a carta virada e adicionar na array this.cardsSelected
+    this.cardsSelected.push(card);
+
+    if (this.cardsSelected.length === 2) {
+      console.log("duas cartas selecionadas. vamos checar se elas são iguais");
+      this.checkPair();
+    }
+  }
+
+  checkPair() {
+    if (this.cardsSelected[0].src === this.cardsSelected[1].src) {
+      console.log("cartas iguais! Acertou! :D");
+
+    } else {
+      console.log("Errou!! Cartas diferentes");
+      this.points -= 2
+      
+    }
   }
 }
