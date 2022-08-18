@@ -10,6 +10,9 @@ const name = document.querySelector("#name");
 const points = document.querySelector("#points");
 
 buttonStart.addEventListener("click", () => {
+  if (inputName.value === "") {
+    return;
+  }
   //criar as cartas randomizadas
   game.renderDeck();
 
@@ -34,10 +37,14 @@ function settingUpGame() {
     cardBack.addEventListener("click", () => {
       let cardFront = cardBack.previousElementSibling;
 
-      cardBack.className = "hide";
-      cardFront.className = "show";
+      cardBack.className = "hide cardBack";
+      cardFront.className = "show cardFront";
 
       game.flip(cardFront);
+
+      console.log(game.points);
+
+      points.innerText = game.points;
     });
   });
 }
