@@ -8,6 +8,7 @@ const inicio = document.querySelector("#inicio");
 const inputName = document.querySelector("#inicio input");
 const name = document.querySelector("#name");
 const points = document.querySelector("#points");
+const score = document.querySelector("#score");
 
 buttonStart.addEventListener("click", () => {
   if (inputName.value === "") {
@@ -18,6 +19,7 @@ buttonStart.addEventListener("click", () => {
 
   //apagar a tela de inicio
   inicio.style.display = "none";
+  score.style.display = "flex";
 
   //setar o userName do atributo da classe
   game.userName = inputName.value;
